@@ -1,5 +1,5 @@
 # Windows-Phone-WOA-non-950s-guide
-<!DOCTYPE html>
+<Windows RT still in WIP>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
