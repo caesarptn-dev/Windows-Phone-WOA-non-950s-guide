@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows ARM Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+        }
+
+        nav li {
+            flex: 1;
+            max-width: 250px;
+        }
+
+        nav button {
+            width: 100%;
+            padding: 20px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav button:hover {
+            background-color: #f0f0f0;
+            color: #667eea;
+        }
+
+        nav button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background-color: #f8f8f8;
+        }
+
+        .content {
+            display: none;
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .win10-logo {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88"><path fill="%230078D4" d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349l-.011 41.34-47.318-6.678-.066-34.739z"/></svg>');
+        }
+
+        .win81-logo {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 88"><path fill="%2300BCF2" d="M0 12.402l35.687-4.86.016 34.423-35.67.203zm35.67 33.529l.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349l-.011 41.34-47.318-6.678-.066-34.739z"/></svg>');
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .guide-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .guide-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .coming-soon {
+            color: #666;
+            font-size: 24px;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .credits-list {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .credit-item {
+            background: #f8f8f8;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .credit-item strong {
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .credit-item p {
+            margin-top: 5px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><button onclick="showSection('win10')" class="nav-btn active" id="btn-win10">Windows 10 ARM32</button></li>
+            <li><button onclick="showSection('winrt')" class="nav-btn" id="btn-winrt">Windows RT</button></li>
+            <li><button onclick="showSection('credits')" class="nav-btn" id="btn-credits">Credits</button></li>
+        </ul>
+    </nav>
+
+    <div id="win10" class="content active">
+        <div class="card">
+            <div class="logo win10-logo"></div>
+            <h1>Windows 10 ARM32</h1>
+            <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/RedGreenBlue09/WFAv7_Installer&ved=2ahUKEwjhveGr8beSAxWsjK8BHWxQCYEQFnoECA8QAQ&usg=AOvVaw2B6mwHgs9rjImN4bOdb5R-" class="guide-link" target="_blank">View Installation Guide</a>
+        </div>
+    </div>
+
+    <div id="winrt" class="content">
+        <div class="card">
+            <div class="logo win81-logo"></div>
+            <h1>Windows RT</h1>
+            <p class="coming-soon">Coming Soon...</p>
+        </div>
+    </div>
+
+    <div id="credits" class="content">
+        <div class="card">
+            <h1>Credits</h1>
+            <div class="credits-list">
+                <div class="credit-item">
+                    <strong>@zazabutanimator</strong>
+                    <p>For website (me)</p>
+                </div>
+                <div class="credit-item">
+                    <strong>@Redgreenblue09</strong>
+                    <p>For Windows 10 ARM32</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all content sections
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section and activate button
+            document.getElementById(section).classList.add('active');
+            document.getElementById('btn-' + section).classList.add('active');
+        }
+    </script>
+</body>
+</html>
