@@ -188,7 +188,7 @@
         <div class="card">
             <div class="logo win81-logo"></div>
             <h1>Windows RT</h1>
-            <p class="coming-soon">Coming Soon...</p>
+            <a href="https://github.com/caesarptn-dev/Windows-RT-installer-for-Lumia-devices"
         </div>
     </div>
 
