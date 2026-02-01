@@ -1,9 +1,10 @@
-<WOA Non-950s Website>
+<WOA Non-950s>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windows ARM Guide</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='18' y='4' width='28' height='56' rx='3' fill='%23FFC107' stroke='%23333' stroke-width='1.5'/%3E%3Crect x='20' y='10' width='24' height='40' fill='%230078D4'/%3E%3Cpath d='M24 14h4v4h-4zm6 0h4v4h-4zm6 0h4v4h-4zm-12 6h4v4h-4zm6 0h4v4h-4zm6 0h4v4h-4zm-12 6h4v4h-4zm6 0h4v4h-4zm6 0h4v4h-4zm-12 6h4v4h-4zm6 0h4v4h-4zm6 0h4v4h-4z' fill='%23fff' opacity='0.3'/%3E%3Crect x='28' y='52' width='8' height='4' rx='2' fill='%23555'/%3E%3Ccircle cx='25' cy='7' r='1' fill='%23555'/%3E%3C/svg%3E">
     <style>
         * {
             margin: 0;
