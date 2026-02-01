@@ -1,4 +1,4 @@
-<WOA Non-950s website>
+<WOA Non-950s Website>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
