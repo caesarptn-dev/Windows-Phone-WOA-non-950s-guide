@@ -1,4 +1,4 @@
-<WOA Non-950s>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,12 +16,88 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: backgroundMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes backgroundMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .liquid-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: float 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .blob1 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.3);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(102, 126, 234, 0.4);
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .blob3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(118, 75, 162, 0.4);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
         }
 
         nav {
-            background-color: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -47,20 +123,20 @@
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            color: #333;
+            color: rgba(255, 255, 255, 0.9);
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
         }
 
         nav button:hover {
-            background-color: #f0f0f0;
-            color: #667eea;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
         }
 
         nav button.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-            background-color: #f8f8f8;
+            color: #fff;
+            border-bottom-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .content {
@@ -87,11 +163,32 @@
         }
 
         .card {
-            background: white;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         .logo {
@@ -112,28 +209,34 @@
         }
 
         h1 {
-            color: #333;
+            color: #fff;
             margin-bottom: 20px;
             font-size: 32px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .guide-link {
             display: inline-block;
             margin-top: 30px;
             padding: 15px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 18px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .guide-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .coming-soon {
@@ -149,21 +252,24 @@
         }
 
         .credit-item {
-            background: #f8f8f8;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 20px;
             margin-bottom: 15px;
             border-radius: 10px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid rgba(255, 255, 255, 0.6);
         }
 
         .credit-item strong {
-            color: #667eea;
+            color: #fff;
             font-size: 18px;
         }
 
         .credit-item p {
             margin-top: 5px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .home-hero {
@@ -173,21 +279,23 @@
 
         .home-title {
             font-size: 42px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 15px;
         }
 
         .home-subtitle {
             font-size: 20px;
-            color: #666;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 40px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .lumia-showcase {
-            background: #f8f8f8;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
@@ -212,10 +320,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: white;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 15px 25px;
             border-radius: 50px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-weight: 600;
         }
 
         .os-badge-icon {
@@ -230,22 +343,28 @@
             display: inline-block;
             margin-top: 15px;
             padding: 10px 25px;
-            background: #f0f0f0;
-            color: #667eea;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
             text-decoration: none;
             border-radius: 25px;
             font-size: 14px;
             transition: all 0.3s ease;
-            border: 2px solid #667eea;
         }
 
         .issue-link:hover {
-            background: #667eea;
-            color: white;
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
+    <div class="liquid-blob blob1"></div>
+    <div class="liquid-blob blob2"></div>
+    <div class="liquid-blob blob3"></div>
+    
     <nav>
         <ul>
             <li><button onclick="showSection('home')" class="nav-btn active" id="btn-home">Home</button></li>
